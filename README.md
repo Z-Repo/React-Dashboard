@@ -1,3 +1,15 @@
+To initiate functionality please use these commands in the terminal:
+
+npx create-react-app
+npm install --legacy-peer-deps
+
+Extensions that were helpful:
+ES7+ React/Redux/React-Native (rafce)
+
+---
+
+Default react information:
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
