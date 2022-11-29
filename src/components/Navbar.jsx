@@ -10,22 +10,76 @@ import avatar from "../data/avatar.jpg";
 import { Cart , Chat, Notification, UserProfile } from ".";
 import { useStateContext } from "../contexts/ContextProvider";
 
+const userName = "Zachariah"
+
+
+// All Navigation buttons will call upon this
 const NavButton = ({ title, customFunction, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
     <button type='button' onClick={customFunction} style={{ color }} className="relative text-xl rounded-full p-3 hover:bg-light-gray">
-      <span style={{ background: dotColor}} className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2">
-        {icon}
-      </span>
+      <span style={{ background: dotColor}} className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"/>
+      {icon}
     </button>
   </TooltipComponent>
 )
 
 const NavBar = () => {
-  const { activeMenu, setActiveMenu } = useStateContext();
+  // This is all contextProvider content being passed
+  const { activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick, screenSize, setScreenSize } = useStateContext();
 
+  //This is the logic
+  useEffect(()=>{
+    // Here we create a function to set our screen size
+    const handleResize=()=>setScreenSize(window.innerWidth) 
+    // Here we listen and if the screen changes we call our function
+    window.addEventListener('resize', handleResize)
+    // Here we figure out the initial width of the screen regardless of if it's being changed
+    handleResize();
+    // Here we remove the listener to relieve our application of extra strain.
+    return () => window.removeEventListener('resize', handleResize)
+  },[]);
+
+  // If the screen is too small initially, we will close the sidebar for the user.
+  useEffect(()=>{
+    if(screenSize <= 900){setActiveMenu(false)}
+    else {setActiveMenu(true)}
+  }, [screenSize])
+
+  //This is the code being injected into HTML
   return (
     <div className='flex justify-between p-2 md:mx-6 relative'>
-      <NavButton title="Menu" customFunction={()=>setActiveMenu((prevActiveMenu) => !prevActiveMenu)} color="blue" icon={<AiOutlineMenu/>}/>
+      <NavButton title="Menu" 
+      customFunction={()=>setActiveMenu((prevActiveMenu) => !prevActiveMenu)}
+      color="blue" icon={<AiOutlineMenu/>}/>
+
+    <div className='flex'>
+      <NavButton title="Cart" 
+      customFunction={()=> handleClick('cart')}
+      color="blue" icon={<FiShoppingCart/>}/>
+
+      <NavButton title="Chat"
+      dotColor="#03C9D7"
+      customFunction={()=> handleClick('chat')}
+      color="blue" icon={<BsChatLeft/>}/>
+
+      <NavButton title="Notifications"
+      dotColor="#03C9D7"
+      customFunction={()=> handleClick('notification')}
+      color="blue" icon={<RiNotification3Line/>}/>
+
+      <TooltipComponent content='Profile' position='BottomCenter'>
+        <div className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg' onClick={() => handleClick('userProfile')}>
+          <img src={avatar} className='rounded-full w-8 h-8'/>
+          <p><span className='text-gray-400 text-14'>Hi,</span>{''}<span className='text-gray-400 font-bold ml-1 text-14'>{userName}</span></p>
+          <MdKeyboardArrowDown className='text-gray-400 text-14'/>
+        </div>
+      </TooltipComponent>
+
+      {isClicked.cart && <Cart/>}
+      {isClicked.chat && <Chat/>}
+      {isClicked.notification && <Notification/>}
+      {isClicked.userProfile && <UserProfile/>}
+      </div>
     </div>
   )
 }
