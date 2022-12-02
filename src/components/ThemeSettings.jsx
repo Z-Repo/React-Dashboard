@@ -18,7 +18,7 @@ const ThemeSettings = () => {
 
   return (
     //This opens the Settings and overlays the rest of the page
-    <div className="bg-half-transparent w-screen fixed nav-item- top-0 right-0">
+    <div className="bg-half-transparent w-screen fixed nav-item- top-0 right-0 z-10">
       <div className="float-right h-screen bg-light-gray dark:bg-[#1b1c1c] dark:text-gray-200 w-400">
         <div className="flex justify-between items-center p-4 ml-4">
           <p className="font-semibold text-lg">Settings</p>

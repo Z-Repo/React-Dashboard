@@ -28,7 +28,7 @@ const Sidebar = () => {
 
   // HTML injection
   return (
-    <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10">
+    <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 z-5">
       {/* Beginning of if statement */}
       {activeMenu && (
         <>

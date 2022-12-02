@@ -66,7 +66,7 @@ const NavBar = () => {
 
   //This is the code being injected into HTML
   return (
-    <div className="flex justify-between p-2 md:mx-6 relative">
+    <div className="flex justify-between p-2 md:mx-6 relative z-6">
       <NavButton
         title="Menu"
         customFunction={() =>
