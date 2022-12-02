@@ -2,6 +2,7 @@ import React from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import { BsCheck } from "react-icons/bs";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
+import { ColorPickerComponent } from "@syncfusion/ej2-react-inputs";
 
 import { themeColors } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
@@ -15,6 +16,10 @@ const ThemeSettings = () => {
     setThemeSettings,
     themeSettings,
   } = useStateContext();
+
+  const changeColor = (color) => {
+    setColor(color.currentValue.hex);
+  };
 
   return (
     //This opens the Settings and overlays the rest of the page
@@ -77,12 +82,14 @@ const ThemeSettings = () => {
                 position="TopCenter"
               >
                 <div className="relative mt-2 cursor-pointer flex gap-5 items-center">
+                  {/* This is for the color circle */}
                   <button
                     type="button"
                     className="h-10 w-10 rounded-full cursor-pointer"
                     style={{ backgroundColor: item.color }}
                     onClick={() => setColor(item.color)}
                   >
+                    {/* This is for the CheckMark in the circle */}
                     <BsCheck
                       className={`ml-2 text-2xl text-white ${
                         item.color === currentColor ? "block" : "hidden"
@@ -93,6 +100,12 @@ const ThemeSettings = () => {
               </TooltipComponent>
             ))}
           </div>
+        </div>
+        {/* Here we Have Theme Color Picker */}
+        <div className="flex-col border-t-1 p-4 ml-4">
+          <p className="font-semibold text-lg mb-3">Theme Picker</p>
+          <ColorPickerComponent change={changeColor} mode="picker" inline />
+          <button onClick={() => setColor(changeColor)}></button>
         </div>
       </div>
     </div>

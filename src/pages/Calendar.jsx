@@ -22,6 +22,7 @@ const Calendar = () => {
         height="550"
         eventSettings={{ dataSource: scheduleData }}
         selectedDate={new Date(2023, 0, 1)}
+        changeCSS
       >
         <Inject
           services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]}
