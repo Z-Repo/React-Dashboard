@@ -1,5 +1,6 @@
 import React from "react";
 import { ColorPickerComponent } from "@syncfusion/ej2-react-inputs";
+import { useStateContext } from "../contexts/ContextProvider";
 
 import { Header } from "../components";
 
@@ -9,12 +10,17 @@ const change = (color) => {
 };
 
 const ColorPicker = () => {
+  const { currentMode } = useStateContext();
+
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 dark:bg-main-dark-bg rounded-3x1">
       <Header category="App" title="ColorPicker" />
       <div className="text-center">
         {/* This generates the pen for a preview */}
-        <div id="preview" />
+        <div
+          id="preview"
+          background={currentMode === "Dark" ? "#3c3c3c" : "#fff"}
+        />
         <div className="flex justify-center items-center gap-20 flex-wrap">
           <div>
             <p className="text-2xl font-semibold mt-2 mb-4 dark:text-white">
