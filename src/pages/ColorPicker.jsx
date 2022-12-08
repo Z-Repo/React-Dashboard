@@ -1,7 +1,7 @@
 import React from "react";
 import { ColorPickerComponent } from "@syncfusion/ej2-react-inputs";
-import { useStateContext } from "../contexts/ContextProvider";
 
+import pen from "../data/pen.png";
 import { Header } from "../components";
 
 const change = (color) => {
@@ -10,20 +10,22 @@ const change = (color) => {
 };
 
 const ColorPicker = () => {
-  const { currentMode } = useStateContext();
-
   return (
-    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 dark:bg-main-dark-bg rounded-3x1">
+    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
       <Header category="App" title="ColorPicker" />
       <div className="text-center">
         {/* This generates the pen for a preview */}
-        <div
-          id="preview"
-          background={currentMode === "Dark" ? "#3c3c3c" : "#fff"}
-        />
+        <div className="pt-10">
+          <div id="preview" />
+          <img
+            src={pen}
+            alt="transparent pen"
+            className="ml-20 relative bottom-16"
+          />
+        </div>
         <div className="flex justify-center items-center gap-20 flex-wrap">
           <div>
-            <p className="text-2xl font-semibold mt-2 mb-4 dark:text-white">
+            <p className="text-2xl font-semibold mb-4 dark:text-white">
               Inline Pallette
             </p>
             <ColorPickerComponent
@@ -36,7 +38,7 @@ const ColorPicker = () => {
             />
           </div>
           <div>
-            <p className="text-2xl font-semibold mt-2 mb-4 dark:text-white">
+            <p className="text-2xl font-semibold mb-4 dark:text-white">
               Inline Picker
             </p>
             <ColorPickerComponent

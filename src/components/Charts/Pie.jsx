@@ -17,7 +17,7 @@ const Pie = ({ id, data, legendVisiblity, height, currentColor }) => {
   const { currentMode } = useStateContext();
 
   return (
-    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 rounded-3x1">
+    <div>
       <Header category="Chart" title="Pie Chart" />
       <AccumulationChartComponent
         id={id}

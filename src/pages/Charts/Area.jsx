@@ -20,7 +20,7 @@ const Area = () => {
   const { currentMode } = useStateContext();
 
   return (
-    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 dark:bg-main-dark-bg rounded-3x1">
+    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
       <Header category="Chart" title="Area Chart" />
       <ChartComponent
         id="area-chart"
@@ -28,7 +28,7 @@ const Area = () => {
         primaryYAxis={areaPrimaryYAxis}
         chartArea={{ border: { width: 0 } }}
         tooltip={{ enable: true }}
-        background={currentMode === "Dark" ? "#3c3c3c" : "#fff"}
+        background={currentMode === "Dark" ? "#fff0" : "#fff0"}
       >
         <Inject services={[SplineAreaSeries, DateTime, Legend]} />
         <SeriesCollectionDirective>

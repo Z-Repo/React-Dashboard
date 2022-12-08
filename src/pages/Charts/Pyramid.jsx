@@ -1,35 +1,59 @@
 import React from "react";
 import {
-  ChartComponent,
-  SeriesCollectionDirective,
-  SeriesDirective,
+  AccumulationChartComponent,
+  AccumulationSeriesCollectionDirective,
+  AccumulationSeriesDirective,
+  AccumulationTooltip,
+  AccumulationDataLabel,
+  AccumulationLegend,
+  PyramidSeries,
   Inject,
-  DateTime,
-  Legend,
 } from "@syncfusion/ej2-react-charts";
 import { useStateContext } from "../../contexts/ContextProvider";
-import { Header } from "../../components";
-import { PyramidData } from "../../data/dummy";
 
-const Pyramid = () => {
+import { PyramidData } from "../../data/dummy";
+import { Header } from "../../components";
+
+const Pyramid = ({ legendVisiblity }) => {
   const { currentMode } = useStateContext();
 
   return (
-    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 dark:bg-main-dark-bg rounded-3x1">
+    <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
       <Header category="Chart" title="Pyramid Chart" />
-      <ChartComponent
-        id="pyramid-chart"
-        chartPyramid={{ border: { width: 0 } }}
+      <AccumulationChartComponent
+        id="charts"
+        legendSettings={{
+          visible: legendVisiblity,
+          background: "#fff4",
+        }}
         tooltip={{ enable: true }}
-        background={currentMode === "Dark" ? "#3c3c3c" : "#fff"}
+        background={currentMode === "Dark" ? "#33373e" : "#fff"}
       >
-        <Inject services={[DateTime, Legend]} />
-        <SeriesCollectionDirective>
-          {PyramidData.map((item, index) => (
-            <SeriesDirective key={index} {...item} />
-          ))}
-        </SeriesCollectionDirective>
-      </ChartComponent>
+        <Inject
+          services={[
+            AccumulationTooltip,
+            AccumulationDataLabel,
+            AccumulationLegend,
+            PyramidSeries,
+          ]}
+        />
+        <AccumulationSeriesCollectionDirective>
+          <AccumulationSeriesDirective
+            type="Pyramid"
+            dataSource={PyramidData}
+            xName="x"
+            yName="y"
+            dataLabel={{
+              visible: true,
+              name: "text",
+              position: "Outside",
+              font: {
+                fontWeight: "600",
+              },
+            }}
+          />
+        </AccumulationSeriesCollectionDirective>
+      </AccumulationChartComponent>
     </div>
   );
 };
