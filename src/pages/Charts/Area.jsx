@@ -29,6 +29,7 @@ const Area = () => {
         chartArea={{ border: { width: 0 } }}
         tooltip={{ enable: true }}
         background={currentMode === "Dark" ? "#fff0" : "#fff0"}
+        legendSettings={{ background: "#fff4" }}
       >
         <Inject services={[SplineAreaSeries, DateTime, Legend]} />
         <SeriesCollectionDirective>

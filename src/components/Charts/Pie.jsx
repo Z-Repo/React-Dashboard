@@ -13,7 +13,7 @@ import { useStateContext } from "../../contexts/ContextProvider";
 
 import { Header } from "../../components";
 
-const Pie = ({ id, data, legendVisiblity, height, currentColor }) => {
+const Pie = ({ id, data, legendVisiblity, height }) => {
   const { currentMode } = useStateContext();
 
   return (

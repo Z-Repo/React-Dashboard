@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const Stacked = () => {
-  return (
-    <div>Stacked</div>
-  )
-}
+import { Header, Stacked as StackedChart } from "../../components";
 
-export default Stacked
+const Stacked = () => (
+  <div>
+    <StackedChart />
+  </div>
+);
+
+export default Stacked;
