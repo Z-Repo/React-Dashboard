@@ -1,17 +1,18 @@
-To initiate functionality please use these commands in the terminal:
+# To initiate functionality please use these commands in the terminal:
 
-npx create-react-app
-npm install --legacy-peer-deps
+### `npx create-react-app`
+### `npm install --legacy-peer-deps`
 
-Documentation:
-React-
+# Documentation:
+
+# React-
 https://reactjs.org/docs/getting-started.html
-TailWind-
+# TailWind-
 https://tailwindcss.com/docs/installation
-SyncFusion-
+# SyncFusion-
 https://ej2.syncfusion.com/react/documentation/introduction/
 
-Extensions that were helpful:
+# Extensions that were helpful:
 ES7+ React/Redux/React-Native (rafce)
 
 ---
