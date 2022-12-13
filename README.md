@@ -15,6 +15,9 @@ https://ej2.syncfusion.com/react/documentation/introduction/
 # Extensions that were helpful:
 ES7+ React/Redux/React-Native (rafce)
 
+# Delpoyment
+https://www.netlify.com/
+
 ---
 
 Default react information:
