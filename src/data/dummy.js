@@ -44,6 +44,10 @@ import product6 from "./product6.jpg";
 import product7 from "./product7.jpg";
 import product8 from "./product8.jpg";
 
+export const userName = "Zachariah";
+export const newMessages = "5";
+export const newNotification = "7";
+
 export const gridOrderImage = (props) => (
   <div>
     <img
@@ -600,12 +604,6 @@ export const links = [
 
 export const cartData = [
   {
-    image: product5,
-    name: "butterscotch ice-cream",
-    category: "Milk product",
-    price: "$250",
-  },
-  {
     image: product6,
     name: "Supreme fresh tomato",
     category: "Vegetable Item",
@@ -613,9 +611,15 @@ export const cartData = [
   },
   {
     image: product7,
-    name: "Red color candy",
+    name: "Ice Cream Deluxe",
     category: "Food Item",
     price: "$190",
+  },
+  {
+    image: product8,
+    name: "Extreme Pin-Wheel",
+    category: "Toy Item",
+    price: "$60",
   },
 ];
 
@@ -748,7 +752,7 @@ export const weeklyStats = [
   },
   {
     icon: <FiStar />,
-    amount: "-$560",
+    amount: "-$125",
     title: "Best Seller",
     desc: "MaterialPro Admin",
     iconBg: "rgb(254, 201, 15)",
@@ -756,7 +760,7 @@ export const weeklyStats = [
   },
   {
     icon: <BsChatLeft />,
-    amount: "+$560",
+    amount: "+$420",
     title: "Most Commented",
     desc: "Ample Admin",
     iconBg: "#00C292",

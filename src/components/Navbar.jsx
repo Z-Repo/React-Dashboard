@@ -9,15 +9,14 @@ import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import avatar from "../data/avatar.jpg";
 import { Cart, Chat, Notification, UserProfile } from ".";
 import { useStateContext } from "../contexts/ContextProvider";
-
-const userName = "Zachariah";
+import { userName } from "../data/dummy";
 
 // All Navigation buttons will call upon this
 const NavButton = ({ title, customFunction, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
     <button
       type="button"
-      onClick={customFunction}
+      onClick={() => customFunction()}
       style={{ color }}
       className="relative text-xl rounded-full p-3 hover:bg-light-gray"
     >
@@ -36,7 +35,6 @@ const NavBar = () => {
     activeMenu,
     setActiveMenu,
     isClicked,
-    setIsClicked,
     handleClick,
     screenSize,
     setScreenSize,
@@ -64,14 +62,14 @@ const NavBar = () => {
     }
   }, [screenSize]);
 
+  const handleActiveMenu = () => setActiveMenu(!activeMenu);
+
   //This is the code being injected into HTML
   return (
     <div className="flex justify-between p-2 md:mx-6 relative z-6">
       <NavButton
         title="Menu"
-        customFunction={() =>
-          setActiveMenu((prevActiveMenu) => !prevActiveMenu)
-        }
+        customFunction={handleActiveMenu}
         color={currentColor}
         icon={<AiOutlineMenu />}
       />
@@ -105,7 +103,7 @@ const NavBar = () => {
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
             onClick={() => handleClick("userProfile")}
           >
-            <img src={avatar} className="rounded-full w-8 h-8" />
+            <img src={avatar} alt="User" className="rounded-full w-8 h-8" />
             <p>
               <span className="text-gray-400 text-14">Hi,</span>
               {""}
